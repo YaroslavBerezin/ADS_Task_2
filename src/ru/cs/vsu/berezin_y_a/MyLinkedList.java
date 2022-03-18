@@ -50,9 +50,7 @@ public class MyLinkedList<T> {
         size++;
     }
 
-    //  Твой метод
-
-    public void addNext (T value, int index) throws Exception {
+    public void addNext(T value, int index) throws Exception {
         checkEmptyError();
         if (index < 0 || index >= size) {
             throw new MyLinkedListException("Incorrect index");
@@ -60,34 +58,23 @@ public class MyLinkedList<T> {
             MyLinkedListNode actualNode = getNode(index);
             MyLinkedListNode newNode = new MyLinkedListNode(value);
 
-            newNode.next = actualNode.next; //С новой на следующую.
-            newNode.next.previous = newNode; //Со следующей на новую.
+            if (actualNode.next != null) {
+                newNode.next = actualNode.next;
+                newNode.next.previous = newNode;
+            }
 
-            actualNode.next = newNode; //С текущей на новую.
-            newNode.previous = actualNode; //С новой на текущую.
+            actualNode.next = newNode;
+            newNode.previous = actualNode;
+
+            if (actualNode == last) {
+                last = newNode;
+            }
 
             size++;
         }
     }
 
-//  Мой метод, работает
-//
-//        public void addNext(T value, int index) throws Exception {
-//        checkEmptyError();
-//        if (index < 0 || index >= size) {
-//            throw new MyLinkedListException("Incorrect index");
-//        } else {
-//            MyLinkedListNode actualNode = getNode(index);
-//            MyLinkedListNode newNode = new MyLinkedListNode(value);
-//            newNode.next = actualNode.next;
-//            actualNode.next = newNode;
-//            size++;
-//        }
-//    }
-
-    //  Твой метод
-
-    public void addPrevious (T value, int index) throws Exception {
+    public void addPrevious(T value, int index) throws Exception {
         checkEmptyError();
         if (index < 0 || index >= size) {
             throw new MyLinkedListException("Incorrect index");
@@ -95,11 +82,17 @@ public class MyLinkedList<T> {
             MyLinkedListNode actualNode = getNode(index);
             MyLinkedListNode newNode = new MyLinkedListNode(value);
 
-            newNode.previous = actualNode.previous; //С новой на предыдущую.
-            newNode.previous.next = newNode; //С предыдущей на новую.
+            if (actualNode != first) {
+                newNode.previous = actualNode.previous;
+                newNode.previous.next = newNode;
+            }
 
-            actualNode.previous = newNode; //С текущей на новую.
-            newNode.next = actualNode; //С новой на текущую.
+            actualNode.previous = newNode;
+            newNode.next = actualNode;
+
+            if (actualNode == first) {
+                first = newNode;
+            }
 
             size++;
         }

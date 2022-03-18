@@ -8,6 +8,7 @@ public class Logic {
             if (checkSimple((Integer) list.get(i))) {
                 list.addNext(0, i);
                 list.addPrevious(0, i);
+                i += 2;
             }
         }
 

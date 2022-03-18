@@ -10,6 +10,11 @@ public class Main {
         list.addLast(5);
         list.addLast(6);
         list.addLast(5);
+        list.addLast(5);
+        list.addLast(3);
+        list.addLast(7);
+        list.addLast(5);
+        list.addLast(11);
 
         logic.changeList(list);
 
