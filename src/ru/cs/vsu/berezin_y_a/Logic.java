@@ -14,15 +14,15 @@ public class Logic {
         return list;
     }
 
-    public boolean checkSimple(Integer num) {
-        if (num < 2) {
+    public boolean checkSimple(Integer number) {
+        if (number < 2) {
             return false;
         }
 
-        double s = Math.sqrt(num);
+        double numberRoot = Math.sqrt(number);
 
-        for (int i = 2; i <= s; i++) {
-            if (num % i == 0) {
+        for (int i = 2; i <= numberRoot; i++) {
+            if (number % i == 0) {
                 return false;
             }
         }

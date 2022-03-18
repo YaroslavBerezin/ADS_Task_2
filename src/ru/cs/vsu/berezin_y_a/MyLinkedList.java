@@ -2,6 +2,10 @@ package ru.cs.vsu.berezin_y_a;
 
 public class MyLinkedList<T> {
 
+    private MyLinkedListNode first = null;
+    private MyLinkedListNode last = null;
+    private int size;
+
     private class MyLinkedListNode {
 
         public T value;
@@ -20,15 +24,27 @@ public class MyLinkedList<T> {
 
     }
 
+    public MyLinkedListNode getNode(int index) {
+        MyLinkedListNode current = first;
+
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+
+        return current;
+    }
+
     private static class MyLinkedListException extends Exception {
         public MyLinkedListException(String message) {
             super(message);
         }
     }
 
-    private MyLinkedListNode first = null;
-    private MyLinkedListNode last = null;
-    private int size;
+    private void checkEmptyError() throws Exception {
+        if (size == 0) {
+            throw new MyLinkedListException("Empty list");
+        }
+    }
 
     public void addFirst(T value) {
         first = new MyLinkedListNode(value, first, null);
@@ -104,12 +120,6 @@ public class MyLinkedList<T> {
         }
     }
 
-    private void checkEmptyError() throws Exception {
-        if (size == 0) {
-            throw new MyLinkedListException("Empty list");
-        }
-    }
-
     public void removeFirst() throws Exception {
         checkEmptyError();
 
@@ -153,16 +163,6 @@ public class MyLinkedList<T> {
             }
             size--;
         }
-    }
-
-    public MyLinkedListNode getNode(int index) {
-        MyLinkedListNode current = first;
-
-        for (int i = 0; i < index; i++) {
-            current = current.next;
-        }
-
-        return current;
     }
 
     public T get(int index) throws Exception {
