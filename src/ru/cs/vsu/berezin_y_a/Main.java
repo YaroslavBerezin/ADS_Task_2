@@ -7,14 +7,9 @@ public class Main {
         MyLinkedList<Integer> list = new MyLinkedList<>();
         Logic logic = new Logic();
 
-        list.addLast(5);
-        list.addLast(6);
-        list.addLast(5);
-        list.addLast(5);
+        list.addLast(2);
         list.addLast(3);
-        list.addLast(7);
         list.addLast(5);
-        list.addLast(11);
 
         logic.changeList(list);
 

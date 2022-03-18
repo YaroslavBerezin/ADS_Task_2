@@ -32,13 +32,16 @@ public class MyLinkedList<T> {
 
     public void addFirst(T value) {
         first = new MyLinkedListNode(value, first, null);
+
         if (size == 0) {
             last = first;
         }
+
         size++;
     }
 
     public void addLast(T value) {
+
         if (size == 0) {
             first = last = new MyLinkedListNode(value);
         } else {
@@ -47,11 +50,13 @@ public class MyLinkedList<T> {
             last = last.next;
             last.previous = tmp;
         }
+
         size++;
     }
 
     public void addNext(T value, int index) throws Exception {
         checkEmptyError();
+
         if (index < 0 || index >= size) {
             throw new MyLinkedListException("Incorrect index");
         } else {
@@ -76,6 +81,7 @@ public class MyLinkedList<T> {
 
     public void addPrevious(T value, int index) throws Exception {
         checkEmptyError();
+
         if (index < 0 || index >= size) {
             throw new MyLinkedListException("Incorrect index");
         } else {
@@ -106,28 +112,33 @@ public class MyLinkedList<T> {
 
     public void removeFirst() throws Exception {
         checkEmptyError();
+
         if (size == 1) {
             last = first = null;
         } else {
             first = first.next;
             first.previous = null;
         }
+
         size--;
     }
 
     public void removeLast() throws Exception {
         checkEmptyError();
+
         if (size == 1) {
             first = last = null;
         } else {
             last = last.previous;
             last.next = null;
         }
+
         size--;
     }
 
     public void remove(int index) throws Exception {
         checkEmptyError();
+
         if (index < 0 || index >= size) {
             throw new MyLinkedListException("Incorrect index");
         } else if (index == 0) {
@@ -146,9 +157,11 @@ public class MyLinkedList<T> {
 
     public MyLinkedListNode getNode(int index) {
         MyLinkedListNode current = first;
+
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
+
         return current;
     }
 
