@@ -3,7 +3,7 @@ package ru.cs.vsu.berezin_y_a;
 public class Logic {
 
     public MyLinkedList<Integer> changeList(MyLinkedList list) throws Exception {
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.getSize(); i++) {
             if (checkSimple((Integer) list.get(i))) {
                 list.addNext(0, i);
                 list.addPrevious(0, i);

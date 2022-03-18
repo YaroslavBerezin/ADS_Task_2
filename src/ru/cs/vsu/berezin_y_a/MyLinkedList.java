@@ -24,16 +24,6 @@ public class MyLinkedList<T> {
 
     }
 
-    public MyLinkedListNode getNode(int index) {
-        MyLinkedListNode current = first;
-
-        for (int i = 0; i < index; i++) {
-            current = current.next;
-        }
-
-        return current;
-    }
-
     private static class MyLinkedListException extends Exception {
         public MyLinkedListException(String message) {
             super(message);
@@ -165,6 +155,16 @@ public class MyLinkedList<T> {
         }
     }
 
+    public MyLinkedListNode getNode(int index) {
+        MyLinkedListNode current = first;
+
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+
+        return current;
+    }
+
     public T get(int index) throws Exception {
         checkEmptyError();
         return getNode(index).value;
@@ -180,7 +180,7 @@ public class MyLinkedList<T> {
         return last.value;
     }
 
-    public int size() {
+    public int getSize() {
         return size;
     }
 

@@ -13,7 +13,7 @@ public class Main {
 
         logic.changeList(list);
 
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.getSize(); i++) {
             System.out.print((i > 0 ? ", " : "") + list.get(i));
         }
 
