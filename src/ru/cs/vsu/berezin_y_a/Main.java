@@ -9,9 +9,13 @@ public class Main {
 
         list.addLast(2);
         list.addLast(3);
+        list.addLast(6);
+        list.addLast(6);
         list.addLast(5);
+        list.addLast(1000);
+        list.addLast(7);
 
-        logic.changeList(list);
+        logic.changeList(list, 0);
 
         for (int i = 0; i < list.getSize(); i++) {
             System.out.print((i > 0 ? ", " : "") + list.get(i));

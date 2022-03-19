@@ -2,16 +2,14 @@ package ru.cs.vsu.berezin_y_a;
 
 public class Logic {
 
-    public MyLinkedList<Integer> changeList(MyLinkedList list) throws Exception {
+    public <T> void changeList(MyLinkedList<T> list, T value) throws Exception {
         for (int i = 0; i < list.getSize(); i++) {
             if (checkSimple((Integer) list.get(i))) {
-                list.addNext(0, i);
-                list.addPrevious(0, i);
+                list.addNext(value, i);
+                list.addPrevious(value, i);
                 i += 2;
             }
         }
-
-        return list;
     }
 
     public boolean checkSimple(Integer number) {

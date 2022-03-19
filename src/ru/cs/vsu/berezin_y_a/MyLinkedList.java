@@ -24,15 +24,9 @@ public class MyLinkedList<T> {
 
     }
 
-    private static class MyLinkedListException extends Exception {
-        public MyLinkedListException(String message) {
-            super(message);
-        }
-    }
-
     private void checkEmptyError() throws Exception {
         if (size == 0) {
-            throw new MyLinkedListException("Empty list");
+            throw new IllegalStateException("Empty list");
         }
     }
 
@@ -64,7 +58,7 @@ public class MyLinkedList<T> {
         checkEmptyError();
 
         if (index < 0 || index >= size) {
-            throw new MyLinkedListException("Incorrect index");
+            throw new IllegalStateException("Incorrect index"); // TODO: 19.03.2022 add index and size
         } else {
             MyLinkedListNode actualNode = getNode(index);
             MyLinkedListNode newNode = new MyLinkedListNode(value);
@@ -89,7 +83,7 @@ public class MyLinkedList<T> {
         checkEmptyError();
 
         if (index < 0 || index >= size) {
-            throw new MyLinkedListException("Incorrect index");
+            throw new IllegalStateException("Incorrect index"); // TODO: 19.03.2022 add index and size
         } else {
             MyLinkedListNode actualNode = getNode(index);
             MyLinkedListNode newNode = new MyLinkedListNode(value);
@@ -109,6 +103,8 @@ public class MyLinkedList<T> {
             size++;
         }
     }
+
+    // TODO: 19.03.2022 add(value, index) method
 
     public void removeFirst() throws Exception {
         checkEmptyError();
@@ -140,20 +136,23 @@ public class MyLinkedList<T> {
         checkEmptyError();
 
         if (index < 0 || index >= size) {
-            throw new MyLinkedListException("Incorrect index");
+            throw new IllegalStateException("Incorrect index");
         } else if (index == 0) {
             removeFirst();
         } else {
             MyLinkedListNode actual = getNode(index);
+//            if (size == 1) {
+//
+//            }
             if (actual != first) {
-                getNode(index - 1).next = actual.next;
+                actual.previous.next = actual.next;
             }
             if (actual != last) {
-                getNode(index + 1).previous = actual.previous;
+                actual.next.previous = actual.previous;
             }
             size--;
         }
-    }
+    } // TODO: 19.03.2022
 
     public MyLinkedListNode getNode(int index) {
         MyLinkedListNode current = first;
@@ -170,18 +169,18 @@ public class MyLinkedList<T> {
         return getNode(index).value;
     }
 
-    public T getFirst() throws Exception {
+    public T getFirst() throws Exception { // TODO: 19.03.2022 change -> first
         checkEmptyError();
         return first.value;
     }
 
-    public T getLast() throws Exception {
+    public T getLast() throws Exception { // TODO: 19.03.2022 change -> last
         checkEmptyError();
         return last.value;
     }
 
     public int getSize() {
         return size;
-    }
+    } // TODO: 19.03.2022 change -> size
 
 }
