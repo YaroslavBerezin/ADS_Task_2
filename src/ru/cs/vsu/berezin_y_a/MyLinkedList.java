@@ -30,6 +30,11 @@ public class MyLinkedList<T> {
         }
     }
 
+    // TODO: 19.03.2022 add(value, index) method
+    public void add() {
+
+    }
+
     public void addFirst(T value) {
         first = new MyLinkedListNode(value, first, null);
 
@@ -58,7 +63,7 @@ public class MyLinkedList<T> {
         checkEmptyError();
 
         if (index < 0 || index >= size) {
-            throw new IllegalStateException("Incorrect index"); // TODO: 19.03.2022 add index and size
+            throw new IllegalStateException("Incorrect index");
         } else {
             MyLinkedListNode actualNode = getNode(index);
             MyLinkedListNode newNode = new MyLinkedListNode(value);
@@ -83,7 +88,7 @@ public class MyLinkedList<T> {
         checkEmptyError();
 
         if (index < 0 || index >= size) {
-            throw new IllegalStateException("Incorrect index"); // TODO: 19.03.2022 add index and size
+            throw new IllegalStateException("Incorrect index");
         } else {
             MyLinkedListNode actualNode = getNode(index);
             MyLinkedListNode newNode = new MyLinkedListNode(value);
@@ -103,8 +108,6 @@ public class MyLinkedList<T> {
             size++;
         }
     }
-
-    // TODO: 19.03.2022 add(value, index) method
 
     public void removeFirst() throws Exception {
         checkEmptyError();
@@ -141,9 +144,6 @@ public class MyLinkedList<T> {
             removeFirst();
         } else {
             MyLinkedListNode actual = getNode(index);
-//            if (size == 1) {
-//
-//            }
             if (actual != first) {
                 actual.previous.next = actual.next;
             }
@@ -152,7 +152,7 @@ public class MyLinkedList<T> {
             }
             size--;
         }
-    } // TODO: 19.03.2022
+    } // TODO: 19.03.2022 move here: removeLast and removeFirst
 
     public MyLinkedListNode getNode(int index) {
         MyLinkedListNode current = first;
@@ -169,18 +169,18 @@ public class MyLinkedList<T> {
         return getNode(index).value;
     }
 
-    public T getFirst() throws Exception { // TODO: 19.03.2022 change -> first
+    public T first() throws Exception {
         checkEmptyError();
         return first.value;
     }
 
-    public T getLast() throws Exception { // TODO: 19.03.2022 change -> last
+    public T last() throws Exception {
         checkEmptyError();
         return last.value;
     }
 
-    public int getSize() {
+    public int size() {
         return size;
-    } // TODO: 19.03.2022 change -> size
+    }
 
 }
